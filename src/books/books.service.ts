@@ -10,5 +10,8 @@ export class BooksService {
         return book;
     }
 
+    findAll(): Book[] {
+        return this.books;
+    }
 
 }

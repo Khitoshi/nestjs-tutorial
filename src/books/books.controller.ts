@@ -27,4 +27,14 @@ export class BooksController {
         return this.booksService.create(book);
     }
 
+    @Get('')
+    findAll(): ResponseBookDto[] {
+        const books = this.booksService.findAll();
+        return books.map((book) => {
+            return {
+                id: book.id,
+                name: book.name
+            }
+        });
+    }
 }
