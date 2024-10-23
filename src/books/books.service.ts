@@ -24,4 +24,8 @@ export class BooksService {
         book.status = BookStatus.LENT_OUT;
         return book;
     }
+
+    delete(id: string): void {
+        this.books = this.books.filter((book) => book.id !== id);
+    }
 }

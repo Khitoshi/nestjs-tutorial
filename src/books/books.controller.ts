@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param, Body, Patch } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, Patch, Delete } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { BooksService } from './books.service';
 import { Book } from './book.model';
@@ -58,5 +58,10 @@ export class BooksController {
     @Patch(':id')
     updateStatus(@Param('id') id: string): ResponseBookDto {
         return this.booksService.updateStatus(id);
+    }
+
+    @Delete(':id')
+    delete(@Param('id') id: string): void {
+        this.booksService.delete(id);
     }
 }
