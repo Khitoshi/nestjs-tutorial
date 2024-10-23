@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, Patch } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { BooksService } from './books.service';
 import { Book } from './book.model';
@@ -49,5 +49,14 @@ export class BooksController {
     @Get(':id')
     findById(@Param('id') id: string): ResponseBookDto {
         return this.booksService.findById(id);
+    }
+
+    @ApiOperation({ summary: 'IDを指定したステータス更新' })
+    @ApiResponse({
+        type: ResponseBookDto,
+    })
+    @Patch(':id')
+    updateStatus(@Param('id') id: string): ResponseBookDto {
+        return this.booksService.updateStatus(id);
     }
 }
