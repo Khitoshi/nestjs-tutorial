@@ -27,6 +27,10 @@ export class BooksController {
         return this.booksService.create(book);
     }
 
+    @ApiOperation({ summary: 'book全取得' })
+    @ApiResponse({
+        type: ResponseBookDto,
+    })
     @Get('')
     findAll(): ResponseBookDto[] {
         const books = this.booksService.findAll();
@@ -36,5 +40,14 @@ export class BooksController {
                 name: book.name
             }
         });
+    }
+
+    @ApiOperation({ summary: 'IDを指定した取得' })
+    @ApiResponse({
+        type: ResponseBookDto,
+    })
+    @Get(':id')
+    findById(@Param('id') id: string): ResponseBookDto {
+        return this.booksService.findById(id);
     }
 }
