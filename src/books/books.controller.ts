@@ -60,6 +60,7 @@ export class BooksController {
         return this.booksService.updateStatus(id);
     }
 
+    @ApiOperation({ summary: 'IDを指定した削除' })
     @Delete(':id')
     delete(@Param('id') id: string): void {
         this.booksService.delete(id);
